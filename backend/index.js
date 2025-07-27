@@ -5,19 +5,15 @@ require('dotenv').config();
 
 const app = express();
 
-const allowedOrigins = ['https://blog-summerizer-one.vercel.app'];
+var allowedOrigins = {
+  origin: [
+    "https://blog-summerizer-one.vercel.app",
+  ],
+  credentials: true 
+};
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['POST'],
-  credentials: true
-}));
+app.use(cors(allowedOrigins));
+
 
 app.use(bodyParser.json());
 
