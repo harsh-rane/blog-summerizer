@@ -38,7 +38,12 @@ function App() {
 
     try {
       const res = await axios.post('https://blog-summarizer-api.onrender.com/api/summarize', { text });
-      setSummary(res.data.summary);
+      if (res.data && res.data.summary) {
+        setSummary(res.data.summary);
+      } else {
+        console.warn('Unexpected response format:', res.data);
+        showNotification('Something went wrong.');
+      }
     } catch (err) {
       console.error(err);
       showNotification('Something went wrong.');
