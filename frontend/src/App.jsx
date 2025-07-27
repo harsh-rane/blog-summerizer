@@ -37,7 +37,7 @@ function App() {
     setSummary('');
 
     try {
-      const res = await axios.post('https://blog-summarizer-api.onrender.com/api/summarize', { text });
+      const res = await axios.post('https://blog-summerizer.onrender.com/api/summarize', { text });
       if (res.data && res.data.summary) {
         setSummary(res.data.summary);
       } else {
