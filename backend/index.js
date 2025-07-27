@@ -7,6 +7,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 5000;
 const HUGGING_FACE_API_URL = 'https://api-inference.huggingface.co/models/facebook/bart-large-cnn';
 const HF_API_KEY = process.env.HUGGING_FACE_TOKEN; 
 
@@ -38,6 +39,6 @@ app.post('/api/summarize', async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log('server is running on port:5000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port: ${PORT}`);
 });
