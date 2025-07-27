@@ -5,12 +5,14 @@ require('dotenv').config();
 
 const app = express();
 
-// app.use(cors({
-//   origin: ['https://blog-summerizer-one.vercel.app/'],
-//   // methods: ['POST', 'OPTIONS'],
-//   // allowedHeaders: ['Content-Type'],
-// }));
-app.use(cors());
+const allowedOrigin = 'https://blog-summerizer-one.vercel.app';
+
+app.use(cors({
+  origin: allowedOrigin,
+  methods: ['POST', 'GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
+app.options('*', cors());
 
 app.use(bodyParser.json());
 
