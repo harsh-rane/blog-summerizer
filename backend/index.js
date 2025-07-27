@@ -4,7 +4,15 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = ['https://blog-summerizer-one.vercel.app'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
