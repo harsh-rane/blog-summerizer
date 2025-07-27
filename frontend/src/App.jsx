@@ -37,7 +37,7 @@ function App() {
     setSummary('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/summarize', { text });
+      const res = await axios.post('https://blog-summarizer-api.onrender.com/api/summarize', { text });
       setSummary(res.data.summary);
     } catch (err) {
       console.error(err);
